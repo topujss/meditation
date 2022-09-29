@@ -1,0 +1,93 @@
+// default
+$lightb: lightblue;
+$lightg: lightgreen;
+$lightc: lightcoral;
+$light: white;
+
+@mixin flex {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  height: 100vh;
+  @include flex;
+  // vid container
+  video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -5;
+  }
+  .time-select,
+  .sound-picker,
+  .player-container {
+    height: 80%;
+    flex: 1;
+    flex-direction: column;
+    @include flex;
+  }
+  .time-select,
+  .sound-picker {
+    button {
+      width: 30%;
+      height: 10%;
+      background: none;
+      border: 1px solid $light;
+      cursor: pointer;
+      border-radius: 0.3rem;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      color: $light;
+    }
+  }
+  .time-select button:hover {
+    color: #000;
+    background: $light;
+  }
+  // sound picker container
+  .sound-picker {
+    button {
+      border: none;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      padding: 30px;
+      &:nth-child(1) {
+        background: #4972a1;
+      }
+      &:nth-child(2) {
+        background: #a14f49;
+      }
+      img {
+        height: 100%;
+      }
+    }
+  }
+  // player container
+  .player-container {
+    position: relative;
+    svg {
+      position: absolute;
+      height: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-90deg);
+      pointer-events: none;
+    }
+    .time-display {
+      position: absolute;
+      bottom: 10%;
+      color: white;
+      font-size: 50px;
+    }
+  }
+}
